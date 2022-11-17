@@ -87,15 +87,16 @@
                 <div class="col-lg-8 offset-lg-1">
                     <div class="filter-control">
                         <ul>
-                            <li>Clothings</li>
-                            <li>HandBag</li>
-                            <li>Shoes</li>
-                            <li>Accessories</li>
+                            <li class="active item" data-tag="*" data-category="women">All</li>
+                            <li class="item" data-tag=".Clothing" data-category="women">Clothings</li>
+                            <li class="item" data-tag=".HandBag" data-category="women">HandBag</li>
+                            <li class="item" data-tag=".Shoes" data-category="women">Shoes</li>
+                            <li class="item" data-tag=".Accessories" data-category="women">Accessories</li>
                         </ul>
                     </div>
-                    <div class="product-slider owl-carousel">
+                    <div class="product-slider owl-carousel women">
                         @foreach($featuredProducts['women'] as $product)
-                        <div class="product-item">
+                        <div class="product-item item {{$product->tag}}">
                             <div class="pi-pic">
                                 <img src="front/img/products/{{$product->productImages[0]->path}}" alt="">
                                 @if($product->discount != null)
@@ -176,15 +177,16 @@
                 <div class="col-lg-8">
                     <div class="filter-control">
                         <ul>
-                            <li>Clothings</li>
-                            <li>HandBag</li>
-                            <li>Shoes</li>
-                            <li>Accessories</li>
+                            <li class="active item" data-tag="*" data-category="men">All</li>
+                            <li class="item" data-tag=".Clothing" data-category="men">Clothings</li>
+                            <li class="item" data-tag=".HandBag" data-category="men">HandBag</li>
+                            <li class="item" data-tag=".Shoes" data-category="men">Shoes</li>
+                            <li class="item" data-tag=".Accessories" data-category="men">Accessories</li>
                         </ul>
                     </div>
-                    <div class="product-slider owl-carousel">
+                    <div class="product-slider owl-carousel men">
                         @foreach($featuredProducts['men'] as $product)
-                            <div class="product-item">
+                            <div class="product-item item {{$product->tag}}">
                                 <div class="pi-pic">
                                     <img src="front/img/products/{{$product->productImages[0]->path}}" alt="">
                                     @if($product->discount != null)
@@ -281,69 +283,29 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-latest-blog">
-                        <img src="front/img/latest-1.jpg" alt="">
-                        <div class="latest-text">
-                            <div class="tag-list">
-                                <div class="tag-item">
-                                    <i class="fa fa-calendar-o"></i>
-                                    May 4, 2022
+                @foreach($blogs as $blog)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single-latest-blog">
+                            <img src="front/img/blog/{{$blog->image}}" alt="">
+                            <div class="latest-text">
+                                <div class="tag-list">
+                                    <div class="tag-item">
+                                        <i class="fa fa-calendar-o"></i>
+                                        {{date('M d, Y', strtotime($blog->created_at))}}
+                                    </div>
+                                    <div class="tag-item">
+                                        <i class="fa fa-comment-o"></i>
+                                        {{count($blog->blogComments)}}
+                                    </div>
                                 </div>
-                                <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
-                                </div>
+                                <a href="">
+                                    <h4>{{$blog->title}}</h4>
+                                </a>
+                                <p>{{$blog->subtitle}}</p>
                             </div>
-                            <a href="">
-                                <h4>The Best Street Style From London codeleanon Weak</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, natus?</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-latest-blog">
-                        <img src="front/img/latest-2.jpg" alt="">
-                        <div class="latest-text">
-                            <div class="tag-list">
-                                <div class="tag-item">
-                                    <i class="fa fa-calendar-o"></i>
-                                    May 4, 2022
-                                </div>
-                                <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
-                                </div>
-                            </div>
-                            <a href="">
-                                <h4>The Best Street Style From London codeleanon Weak</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, natus?</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-latest-blog">
-                        <img src="front/img/latest-3.jpg" alt="">
-                        <div class="latest-text">
-                            <div class="tag-list">
-                                <div class="tag-item">
-                                    <i class="fa fa-calendar-o"></i>
-                                    May 4, 2022
-                                </div>
-                                <div class="tag-item">
-                                    <i class="fa fa-comment-o"></i>
-                                    5
-                                </div>
-                            </div>
-                            <a href="">
-                                <h4>The Best Street Style From London codeleanon Weak</h4>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, natus?</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="benefit-items">
                 <div class="row">

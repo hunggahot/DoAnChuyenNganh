@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\Blog\BlogRepository;
+use App\Repositories\Blog\BlogRepositoryInterface;
+use App\Services\Blog\BlogService;
+use App\Services\Blog\BlogServiceInterface;
 use Illuminate\Support\ServiceProvider;
 
 use App\Repositories\ProductComment\ProductCommentRepository;
@@ -43,6 +47,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             ProductCommentServiceInterface::class,
             ProductCommentService::class
+        );
+
+        //Blog
+        $this->app->singleton(
+            BlogRepositoryInterface::class,
+            BlogRepository::class
+        );
+
+        $this->app->singleton(
+            BlogServiceInterface::class,
+            BlogService::class
         );
 
 //        //Category
