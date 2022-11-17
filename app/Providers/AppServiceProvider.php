@@ -4,10 +4,15 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Repositories\ProductComment\ProductCommentRepository;
+use App\Repositories\ProductComment\ProductCommentRepositoryInterface;
+use App\Services\ProductComment\ProductCommentService;
+use App\Services\ProductComment\ProductCommentServiceInterface;
+
 use App\Repositories\Product\ProductRepository;
 use App\Repositories\Product\ProductRepositoryInterface;
-use App\Service\Product\ProductService;
-use App\Service\Product\ProductServiceInterface;
+use App\Services\Product\ProductService;
+use App\Services\Product\ProductServiceInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +32,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             ProductServiceInterface::class,
             ProductService::class
+        );
+
+        //ProductComment
+        $this->app->singleton(
+            ProductCommentRepositoryInterface::class,
+            ProductCommentRepository::class
+        );
+
+        $this->app->singleton(
+            ProductCommentServiceInterface::class,
+            ProductCommentService::class
         );
 
 //        //Category

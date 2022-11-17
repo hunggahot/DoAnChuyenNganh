@@ -2,9 +2,10 @@
 
 namespace App\Repositories\Product;
 
-use App\Repositories\RepositoriesInterface;
+use App\Repositories\RepositoryInterface;
 
-interface ProductRepositoryInterface extends RepositoriesInterface
+interface ProductRepositoryInterface extends RepositoryInterface
 {
-
+    public function getRelatedProducts($product, $limit = 4);
+    public function getFeaturedProductByCategory(int $categoryId);
 }

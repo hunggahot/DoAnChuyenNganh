@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Service\Product;
+namespace App\Services\Product;
 
 use App\Repositories\Product\ProductRepositoryInterface;
-use App\Service\BaseService;
+use App\Services\BaseService;
 
 class ProductService extends BaseService implements ProductServiceInterface
 {
@@ -14,7 +14,7 @@ class ProductService extends BaseService implements ProductServiceInterface
         $this->repository = $productRepository;
     }
 
-    public function  find($id)
+    public function find($id)
     {
         $product = $this->repository->find($id);
         $avgRating = 0;
@@ -27,5 +27,18 @@ class ProductService extends BaseService implements ProductServiceInterface
         $product->avgRating = $avgRating;
 
         return $product;
+    }
+
+    public function getRelatedProducts($product, $limit = 4)
+    {
+        return $this->repository->getRelatedProducts($product, $limit);
+    }
+
+    public function getFeaturedProducts()
+    {
+        return [
+            "men" => $this->repository->getFeaturedProductByCategory(1),
+            "women" => $this->repository->getFeaturedProductByCategory(2),
+        ];
     }
 }

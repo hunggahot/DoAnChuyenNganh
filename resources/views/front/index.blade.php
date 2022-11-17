@@ -94,102 +94,38 @@
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
+                        @foreach($featuredProducts['women'] as $product)
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="front/img/products/women-1.jpg" alt="">
-                                <div class="sale">Sale</div>
+                                <img src="front/img/products/{{$product->productImages[0]->path}}" alt="">
+                                @if($product->discount != null)
+                                    <div class="sale">Sale</div>
+                                @endif
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
                                 <ul>
                                     <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
+                                    <li class="quick-view"><a href="shop/product/{{$product->id}}">+ Quick View</a></li>
                                     <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
                                 </ul>
                             </div>
                             <div class="pi-text">
-                                <div class="category-name">Coat</div>
+                                <div class="category-name">{{$product->tag}}</div>
                                 <a href="">
-                                    <h5>Pure Pineapple</h5>
+                                    <h5>{{$product->name}}</h5>
                                 </a>
                                 <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
+                                    @if($product->discount != null)
+                                        ${{@$product->discount}}
+                                        <span>${{$product->price}}</span>
+                                    @else
+                                        ${{$product->price}}
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/women-2.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/women-3.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/women-4.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -247,102 +183,38 @@
                         </ul>
                     </div>
                     <div class="product-slider owl-carousel">
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/man-1.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
+                        @foreach($featuredProducts['men'] as $product)
+                            <div class="product-item">
+                                <div class="pi-pic">
+                                    <img src="front/img/products/{{$product->productImages[0]->path}}" alt="">
+                                    @if($product->discount != null)
+                                        <div class="sale">Sale</div>
+                                    @endif
+                                    <div class="icon">
+                                        <i class="icon_heart_alt"></i>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
+                                        <li class="quick-view"><a href="shop/product/{{$product->id}}">+ Quick View</a></li>
+                                        <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
+                                    </ul>
                                 </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/man-2.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
+                                <div class="pi-text">
+                                    <div class="category-name">{{$product->tag}}</div>
+                                    <a href="">
+                                        <h5>{{$product->name}}</h5>
+                                    </a>
+                                    <div class="product-price">
+                                        @if($product->discount != null)
+                                            ${{$product->discount}}
+                                            <span>${{$product->price}}</span>
+                                        @else
+                                            ${{$product->price}}
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/man-3.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-item">
-                            <div class="pi-pic">
-                                <img src="front/img/products/man-4.jpg" alt="">
-                                <div class="sale">Sale</div>
-                                <div class="icon">
-                                    <i class="icon_heart_alt"></i>
-                                </div>
-                                <ul>
-                                    <li class="w-icon active"><a href=""><i class="icon_bag_alt"></i></a></li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
-                                    <li class="w-icon"><a href=""><i class="fa fa-random"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="pi-text">
-                                <div class="category-name">Coat</div>
-                                <a href="">
-                                    <h5>Pure Pineapple</h5>
-                                </a>
-                                <div class="product-price">
-                                    $14.00
-                                    <span>$35.00</span>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1">
