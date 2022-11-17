@@ -18,6 +18,12 @@ class ShopController extends Controller
         $this->productCommentService = $productCommentService;
     }
 
+    public function index(Request $request){
+        $products = $this->productService->getProductIndex($request);
+
+        return view('front.shop.index', compact('products'));
+    }
+
     public function show($id){
         $product = $this->productService->find($id);
         $relatedProducts = $this->productService->getRelatedProducts($product);
