@@ -46,4 +46,9 @@ class ProductService extends BaseService implements ProductServiceInterface
     {
         return $this->repository->getProductIndex($request);
     }
+
+    public function getProductsByCategory($request, $categoryName)
+    {
+        return $this->repository->getProductsByCategory($categoryName, $request);
+    }
 }

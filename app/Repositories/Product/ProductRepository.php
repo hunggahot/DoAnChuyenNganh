@@ -2,8 +2,10 @@
 
 namespace App\Repositories\Product;
 
+use App\Models\ProductCategory;
 use App\Repositories\BaseRepository;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductRepository extends BaseRepository implements ProductRepositoryInterface
 {
@@ -28,13 +30,34 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->get();
     }
 
+    public function getProductsByCategory($request, $categoryName)
+    {
+        $products = ProductCategory::where('name', $categoryName)->first()->products->toQuery();
+
+        $products = $this->filter($products, $request);
+
+        $products = $this->sortAndPagination($products, $request);
+
+        return $products;
+    }
+
     public function getProductIndex($request)
     {
-        $perPage = $request->show ?? 9;
-        $sortBy = $request->sort_by ?? 'latest';
         $search = $request->search ?? '';
 
         $products = $this->model->where('name', 'like', '%' . $search . '%');
+
+        $products = $this->filter($products, $request);
+
+        $products = $this->sortAndPagination($products, $request);
+
+        return $products;
+    }
+
+    private function sortAndPagination($products, Request $request)
+    {
+        $perPage = $request->show ?? 9;
+        $sortBy = $request->sort_by ?? 'latest';
 
         switch ($sortBy){
             case 'latest':
@@ -62,6 +85,39 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $products = $products->paginate($perPage);
 
         $products->appends(['sort_by' => $sortBy, 'show' => $perPage]);
+
+        return $products;
+    }
+
+    private function filter($products, Request $request)
+    {
+        //BRAND
+        $brands = $request->brand ?? [];
+        $brand_ids = array_keys($brands);
+        $products = $brand_ids != null ? $products->whereIn('brand_id', $brand_ids) : $products;
+
+        //PRICE
+        $priceMin = $request->price_min;
+        $priceMax = $request->price_max;
+
+        $priceMin = str_replace('$', '', $priceMin);
+        $priceMax = str_replace('$', '', $priceMax);
+
+        $products = ($priceMin != null && $priceMax != null) ? $products->whereBetween('price', [$priceMin, $priceMax]) : $products;
+
+        //COLOR
+        $color = $request->color;
+        $products = $color != null ? $products->whereHas('productDetails', function ($query) use ($color){
+            return $query->where('color', $color)
+                ->where('qty', '>', 0);
+        }) : $products;
+
+        //SIZE
+        $size = $request->size;
+        $products = $size != null ? $products->whereHas('productDetails', function ($query) use ($size){
+            return $query->where('size', $size)
+                ->where('qty', '>', 0);
+        }) : $products;
 
         return $products;
     }

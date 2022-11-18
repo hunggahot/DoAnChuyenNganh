@@ -9,4 +9,5 @@ interface ProductServiceInterface extends ServiceInterface
     public function getRelatedProducts($product, $limit = 4);
     public function getFeaturedProducts();
     public function getProductIndex($request);
+    public function getProductsByCategory($request, $categoryName);
 }

@@ -17,9 +17,16 @@ Route::get('/', [\App\Http\Controllers\Front\HomeController::class, 'index']);
 
 Route::prefix('shop')->group(function () {
 
+    Route::get('', [\App\Http\Controllers\Front\ShopController::class, 'index']);
+
     Route::get('product/{id}', [\App\Http\Controllers\Front\ShopController::class, 'show']);
     Route::post('product/{id}', [\App\Http\Controllers\Front\ShopController::class, 'postComment']);
 
-    Route::get('', [\App\Http\Controllers\Front\ShopController::class, 'index']);
+    Route::get('category/{categoryName}', [\App\Http\Controllers\Front\ShopController::class, 'category']);
+});
+
+Route::prefix('cart')->group(function (){
+
+    Route::get('add/{$id}', [\App\Http\Controllers\Front\CartController::class, 'add']);
 });
 
