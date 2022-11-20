@@ -281,7 +281,9 @@
                 </div>
                 <div class="row">
                     @foreach($relatedProducts as $product)
-                        @include('front.components.product-item')
+                        <div class="col-lg-3 col-sm-6">
+                            @include('front.components.product-item')
+                        </div>
                     @endforeach
                 </div>
             </div>

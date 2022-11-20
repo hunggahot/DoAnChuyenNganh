@@ -26,7 +26,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($carts as $cart)
-                                    <tr data-rowId="{{$cart->rowId}}">
+                                    <tr data-rowid="{{$cart->rowId}}">
                                         <td class="cart-pic first-row"><img style="height: 170px; margin-left: 45px" src="front/img/products/{{$cart->options->images[0]->path}}" alt=""></td>
                                         <td class="cart-title first-row">
                                             <h5>{{$cart->name}}</h5>
@@ -35,7 +35,7 @@
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <input type="text" value="{{$cart->qty}}">
+                                                    <input type="text" value="{{$cart->qty}}" data-rowId="{{$cart->rowId}}">
                                                 </div>
                                             </div>
                                         </td>
@@ -68,7 +68,7 @@
                                         <li class="subtotal">Subtotal <span>${{$total}}</span></li>
                                         <li class="cart-total">Total <span>${{$subtotal}}</span></li>
                                     </ul>
-                                    <a href="check-out.html" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                    <a href="./checkout" class="proceed-btn">PROCEED TO CHECK OUT</a>
                                 </div>
                             </div>
                         </div>
