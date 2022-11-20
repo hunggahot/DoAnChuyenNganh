@@ -41,7 +41,7 @@
                 <div class="ht-left">
                     <div class="mail-service">
                         <i class="fa fa-envelope"></i>
-                        lamquochung03042001@gmail.com
+                        hphstore2022@gmail.com
                     </div>
                     <div class="phone-service">
                         <i class="fa fa-phone"></i>
@@ -50,7 +50,16 @@
                 </div>
 
                 <div class="ht-right">
-                    <a href="login.html" class="login-panel"><i class="fa fa-user"></i>Login</a>
+
+                    @if(Auth::check())
+                        <a href="./account/logout" class="login-panel">
+                            <i class="fa fa-user"></i>
+                            {{Auth::user()->name}} - Logout
+                        </a>
+                    @else
+                        <a href="./account/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                    @endif
+
                     <div class="lan-selector">
                         <select name="countries" id="countries" class="language_drop" style="width: 300px;">
                             <option value="yt" data-image="front/img/flag-1.jpg" data-imagecss="flag yt" data-title="English">English</option>
@@ -128,7 +137,7 @@
                                     </div>
                                     <div class="select-button">
                                         <a href="./cart" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="check-out.html" class="primary-btn view-card">CHECK OUT</a>
+                                        <a href="./checkout" class="primary-btn view-card">CHECK OUT</a>
                                     </div>
                                 </div>
                             </li>
@@ -173,12 +182,13 @@
                             <li><a href="./contact.html">Contact</a></li>
                             <li><a href="">Pages</a>
                                 <ul class="dropdown">
+                                    <li><a href="./account/my-order">My Order</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                     <li><a href="./cart">Shopping Cart</a></li>
                                     <li><a href="./check-out.html">Checkout</a></li>
                                     <li><a href="./faq.html">Faq</a></li>
                                     <li><a href="./register.html">Register</a></li>
-                                    <li><a href="./login.html">Login</a></li>
+                                    <li><a href="./account/login">Login</a></li>
                                 </ul>
                             </li>
                         </ul>

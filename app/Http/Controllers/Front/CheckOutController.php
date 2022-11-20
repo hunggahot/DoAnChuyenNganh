@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Services\Order\OrderServiceInterface;
 use App\Services\OrderDetail\OrderDetailServiceInterface;
+use App\Utilities\Constant;
 use App\Utilities\VNPay;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
 
 class CheckOutController extends Controller
 {
@@ -33,7 +35,9 @@ class CheckOutController extends Controller
     public function addOrder(Request $request)
     {
         //Add Order
-        $order = $this->orderService->create($request->all());
+        $data = $request->all();
+        $data['status'] = Constant::order_status_ReceiveOrders;
+        $order = $this->orderService->create($data);
 
         //Add Order Details
         $carts = Cart::content();
@@ -51,6 +55,11 @@ class CheckOutController extends Controller
         }
 
         if($request->payment_type == 'pay_later'){
+            //Send Email
+            $total = Cart::total();
+            $subtotal = Cart::subtotal();
+            $this->sendEmail($order, $total, $subtotal);
+
             //Delete Order
             Cart::destroy();
 
@@ -84,6 +93,17 @@ class CheckOutController extends Controller
         if($vnp_ResponseCode != null){
             //Success
             if($vnp_ResponseCode == 00){
+                //Update Status
+                $this->orderService->update([
+                    'status' => Constant::order_status_Paid,
+                ], $vnp_TxnRef);
+
+                //Send Mail
+                $order = $this->orderService->find($vnp_TxnRef); // $vnp_TxnRef = order_Id
+                $total = Cart::total();
+                $subtotal = Cart::subtotal();
+                $this->sendEmail($order, $total, $subtotal);
+
                 //Delete Cart
                 Cart::destroy();
 
@@ -105,5 +125,18 @@ class CheckOutController extends Controller
     {
         $notification = session('notification');
         return view('front.checkout.result', compact('notification'));
+    }
+
+    private function sendEmail($order, $total, $subtotal)
+    {
+        $email_to = $order->email;
+
+        Mail::send('front.checkout.email',
+            compact('order', 'total', 'subtotal'),
+            function ($message) use ($email_to){
+                $message->from('hphstore2022@gmail.com', 'Hph Store');
+                $message->to($email_to, $email_to);
+                $message->subject('Thông báo đơn hàng');
+        });
     }
 }

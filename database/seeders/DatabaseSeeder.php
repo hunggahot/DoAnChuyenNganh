@@ -24,9 +24,18 @@ class DatabaseSeeder extends Seeder
                 'email' => 'hung@gmail.com',
                 'password' => Hash::make('123456'),
                 'avatar' => null,
-                'level' => 0,
+                'level' => 2,
                 'description' => null,
+
+                'company_name' => 'Hutech',
+                'country' => 'Viet Nam',
+                'street_address' => '123 Nguyễn Cư Trinh, Nguyễn Cư Trinh, Quận 1',
+                'town_city' => 'Ho Chi Minh',
+                'phone' => '0362282969',
             ],
+        ]);
+
+        DB::table('users')->insert([
             [
                 'id' => 2,
                 'name' => 'admin',

@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Front
+
 Route::get('/', [\App\Http\Controllers\Front\HomeController::class, 'index']);
 
 Route::prefix('shop')->group(function () {
@@ -45,3 +47,26 @@ Route::prefix('checkout')->group(function (){
     Route::get('vnPayCheck', [\App\Http\Controllers\Front\CheckOutController::class, 'vnPayCheck']);
 });
 
+Route::prefix('account')->group(function (){
+
+    Route::get('register', [\App\Http\Controllers\Front\AccountController::class, 'register']);
+    Route::post('register', [\App\Http\Controllers\Front\AccountController::class, 'postRegister']);
+
+    Route::get('login', [\App\Http\Controllers\Front\AccountController::class, 'login']);
+    Route::post('login', [\App\Http\Controllers\Front\AccountController::class, 'checkLogin']);
+
+    Route::get('logout', [\App\Http\Controllers\Front\AccountController::class, 'logout']);
+
+    Route::prefix('my-order')->middleware('CheckMemberLogin')->group(function (){
+
+       Route::get('/', [\App\Http\Controllers\Front\AccountController::class, 'myOrderIndex']);
+       Route::get('{id}', [\App\Http\Controllers\Front\AccountController::class, 'myOrderShow']);
+    });
+});
+
+
+//Admin
+
+Route::prefix('admin')->group(function (){
+    Route::resource('user', \App\Http\Controllers\Admin\UserController::class);
+});
