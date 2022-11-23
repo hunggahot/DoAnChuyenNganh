@@ -26,7 +26,8 @@ class HomeController extends Controller
 
         if(Auth::attempt($credentials, $remember)){
             return redirect()->intended('admin'); //Mặc định là: admin.
-        } else{
+        }
+        else{
             return back()
                 ->with('notification', 'Sai email hoặc mật khẩu');
         }

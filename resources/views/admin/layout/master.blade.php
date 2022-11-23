@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Admin - CodeLean eShop</title>
+    <title>@yield('title') | Admin</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description"
@@ -1458,27 +1458,27 @@
                             </a>
                             <ul>
                                 <li>
-                                    <a href="./admin/user" class="mm-active">
+                                    <a href="./admin/user" class="{{(request()->segment(2) == 'user') ? 'mm-active' : ''}}">
                                         <i class="metismenu-icon"></i>User
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="./admin/order">
+                                    <a href="./admin/order" class="{{(request()->segment(2) == 'order') ? 'mm-active' : ''}}">
                                         <i class="metismenu-icon"></i>Order
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="./admin/product">
+                                    <a href="./admin/product" class="{{(request()->segment(2) == 'product') ? 'mm-active' : ''}}">
                                         <i class="metismenu-icon"></i>Product
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="./admin/category">
+                                    <a href="./admin/category" class="{{(request()->segment(2) == 'category') ? 'mm-active' : ''}}">
                                         <i class="metismenu-icon"></i>Category
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="./admin/brand">
+                                    <a href="./admin/brand" class="{{(request()->segment(2) == 'brand') ? 'mm-active' : ''}}">
                                         <i class="metismenu-icon"></i>Brand
                                     </a>
                                 </li>
