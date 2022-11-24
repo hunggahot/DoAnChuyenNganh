@@ -3,18 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Services\Order\OrderServiceInterface;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    private $orderService;
+
+    public function __construct(OrderServiceInterface $orderService)
+    {
+        $this->orderService = $orderService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $orders = $this->orderService->searchAndPaginate('first_name', $request->get('search'));
+
+        return view('admin.order.index', compact('orders'));
     }
 
     /**
@@ -46,7 +56,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = $this->orderService->find($id);
+
+        return view('admin.order.show', compact('order'));
     }
 
     /**
