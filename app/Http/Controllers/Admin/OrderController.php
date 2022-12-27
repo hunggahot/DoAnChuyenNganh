@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\Order\OrderServiceInterface;
+use App\Services\Product\ProductServiceInterface;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     private $orderService;
+    private $productService;
 
-    public function __construct(OrderServiceInterface $orderService)
+    public function __construct(OrderServiceInterface $orderService, ProductServiceInterface $productService)
     {
         $this->orderService = $orderService;
+        $this->productService = $productService;
     }
 
     /**
@@ -94,4 +97,5 @@ class OrderController extends Controller
     {
         //
     }
+
 }

@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Repositories\ProductCategory;
+namespace App\Repositories\Coupon;
 
-use App\Models\ProductCategory;
+use App\Models\Coupon;
 use App\Repositories\BaseRepository;
 
-class ProductCategoryRepository extends BaseRepository implements ProductCategoryRepositoryInterface
+class CouponRepository extends BaseRepository implements CouponRepositoryInterface
 {
     public function getModel()
     {
-        return ProductCategory::class;
+        return Coupon::class;
     }
+
 }

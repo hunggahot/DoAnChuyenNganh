@@ -21,6 +21,7 @@ class CreateOrderDetailsTable extends Migration
             $table->integer('qty');
             $table->double('amount');
             $table->double('total');
+            $table->string('order_date')->nullable();
 
             $table->timestamps();
         });

@@ -1,20 +1,24 @@
 @extends('front.layout.master')
 
-@section('title', 'Result')
+@section('title', 'Quên Mật Khẩu')
 
 @section('body')
 
         <!-- Section Begin -->
         <div class="checkout-section spad">
             <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h4>
-                                {{ $notification }}
-                            </h4>
-
-                            <a href="./" class="primary-btn mt-5">Tiếp tục mua hàng</a>
-                        </div>
+                <h4>
+                    {{ $notification }}
+                </h4>
+                    <div class="login-form">
+                        <h2>Điền email để lấy lại mật khẩu</h2>
+                        <form action="{{url('account/recover-pass')}}" method="POST">
+                            @csrf
+                            <div class="group-input">
+                                <input type="text" name="email" placeholder="Nhập Email">
+                            </div>
+                            <button type="submit" class="btn site-btn">Gửi</button>
+                        </form>
                     </div>
             </div>
         </div>

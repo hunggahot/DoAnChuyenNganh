@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('content')->nullable();
+            $table->double('funds')->nullable();
             $table->double('price');
             $table->integer('qty');
             $table->double('discount')->nullable();

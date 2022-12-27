@@ -1,6 +1,6 @@
 <form action="{{request()->segment(2) == 'product' ? 'shop' : ''}}">
     <div class="filter-widget">
-        <h4 class="fw-title">Categories</h4>
+        <h4 class="fw-title">Danh mục</h4>
         <ul class="filter-catagories">
             @foreach($categories as $category)
                 <li><a href="shop/category/{{$category->name}}">{{$category->name}}</a></li>
@@ -8,7 +8,7 @@
         </ul>
     </div>
     <div class="filter-widget">
-        <h4 class="fw-title">Brand</h4>
+        <h4 class="fw-title">Hãng</h4>
         <div class="fw-brand-check">
             @foreach($brands as $brand)
                 <div class="bc-item">
@@ -25,28 +25,28 @@
             @endforeach
         </div>
     </div>
-    <div class="filter-widget">
-        <h4 class="fw-title">Price</h4>
-        <div class="filter-range-wrap">
-            <div class="range-slider">
-                <div class="price-input">
-                    <input type="text" id="minamount" name="price_min">
-                    <input type="text" id="maxamount" name="price_max">
-                </div>
-            </div>
-            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                 data-min="10" data-max="999"
-                 data-min-value="{{str_replace('$', '', request('price_min'))}}"
-                 data-max-value="{{str_replace('$', '', request('price_max'))}}">
-                <div class="ui-slider-range ui-corner ui-corner-all ui-widget-header"></div>
-                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-            </div>
-        </div>
-        {{--                                <a href="#" class="filter-btn">Filter</a>--}}
+{{--    <div class="filter-widget">--}}
+{{--        <h4 class="fw-title">Giá</h4>--}}
+{{--        <div class="filter-range-wrap">--}}
+{{--            <div class="range-slider">--}}
+{{--                <div class="price-input">--}}
+{{--                    <input type="text" id="minamount" name="price_min">--}}
+{{--                    <input type="text" id="maxamount" name="price_max">--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--}}
+{{--                 data-min="50000" data-max="1000000"--}}
+{{--                 data-min-value="{{str_replace('$', '', request('price_min'))}}"--}}
+{{--                 data-max-value="{{str_replace('$', '', request('price_max'))}}">--}}
+{{--                <div class="ui-slider-range ui-corner ui-corner-all ui-widget-header"></div>--}}
+{{--                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--}}
+{{--                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--        --}}{{--                                <a href="#" class="filter-btn">Filter</a>--}}
 
-        <button type="submit" class="filter-btn">Filter</button>
-    </div>
+{{--        <button type="submit" class="filter-btn">Filter</button>--}}
+{{--    </div>--}}
     <div class="filter-widget">
         <h4 class="fw-title">Size</h4>
         <div class="fw-size-choose">
@@ -72,18 +72,18 @@
             </div>
         </div>
     </div>
-    <div class="filter-widget">
-        <h4 class="fw-title">Tags</h4>
-        <div class="fw-tags">
-            <a href="#">Towel</a>
-            <a href="#">Shoes</a>
-            <a href="#">Coat</a>
-            <a href="#">Dresses</a>
-            <a href="#">Trousers</a>
-            <a href="#">Men's hats</a>
-            <a href="#">Backpack</a>
-        </div>
-    </div>
+{{--    <div class="filter-widget">--}}
+{{--        <h4 class="fw-title">Tags</h4>--}}
+{{--        <div class="fw-tags">--}}
+{{--            <a href="#">Towel</a>--}}
+{{--            <a href="#">Shoes</a>--}}
+{{--            <a href="#">Coat</a>--}}
+{{--            <a href="#">Dresses</a>--}}
+{{--            <a href="#">Trousers</a>--}}
+{{--            <a href="#">Men's hats</a>--}}
+{{--            <a href="#">Backpack</a>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="filter-widget">
         <h4 class="fw-title">Color</h4>
         <div class="fw-color-choose">

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Login | Admin - CodeLean eShop</title>
+    <title>Login | Admin - Hph Store</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="CodeLean Design">
@@ -24,7 +24,6 @@
             <div class="h-100 bg-plum-plate bg-animation">
                 <div class="d-flex h-100 justify-content-center align-items-center">
                     <div class="mx-auto app-login-box col-md-8">
-                        <div class="app-logo-inverse mx-auto mb-3"></div>
                         <div class="modal-dialog w-100 mx-auto">
                             <div class="modal-content">
                                 <form class="" method="post" action="">
@@ -32,8 +31,8 @@
                                     <div class="modal-body">
                                         <div class="h5 modal-title text-center">
                                             <h4 class="mt-2">
-                                                <div>Welcome back,</div>
-                                                <span>Please sign in to your account below.</span>
+                                                <div>Chào mừng bạn,</div>
+                                                <span>Xin vui lòng đăng nhập vào Admin.</span>
                                             </h4>
                                         </div>
 
@@ -57,18 +56,18 @@
                                             <div class="position-relative form-check">
                                                 <input name="remember" id="exampleCheck" type="checkbox"
                                                     class="form-check-input">
-                                                <label for="exampleCheck" class="form-check-label">Keep me logged in</label>
+                                                <label for="exampleCheck" class="form-check-label">Ghi nhớ tôi</label>
                                             </div>
                                     </div>
                                     <div class="modal-footer clearfix">
                                         <div class="float-right">
-                                            <button type="submit" class="btn btn-primary btn-lg">Login to Dashboard</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Đăng nhập</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="text-center text-white opacity-8 mt-3">Copyright © CodeLean 2022</div>
+                        <div class="text-center text-white opacity-8 mt-3">Copyright © Hph Store 2022</div>
                     </div>
                 </div>
             </div>

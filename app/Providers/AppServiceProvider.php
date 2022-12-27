@@ -6,6 +6,8 @@ use App\Repositories\Blog\BlogRepository;
 use App\Repositories\Blog\BlogRepositoryInterface;
 use App\Repositories\Brand\BrandRepository;
 use App\Repositories\Brand\BrandRepositoryInterface;
+use App\Repositories\Coupon\CouponRepository;
+use App\Repositories\Coupon\CouponRepositoryInterface;
 use App\Repositories\Order\OrderRepository;
 use App\Repositories\Order\OrderRepositoryInterface;
 use App\Repositories\OrderDetail\OrderDetailRepository;
@@ -19,6 +21,8 @@ use App\Repositories\ProductCategory\ProductCategoryRepository;
 use App\Repositories\ProductCategory\ProductCategoryRepositoryInterface;
 use App\Services\Brand\BrandService;
 use App\Services\Brand\BrandServiceInterface;
+use App\Services\Coupon\CouponService;
+use App\Services\Coupon\CouponServiceInterface;
 use App\Services\Order\OrderService;
 use App\Services\Order\OrderServiceInterface;
 use App\Services\OrderDetail\OrderDetailService;
@@ -125,6 +129,17 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(
             OrderDetailServiceInterface::class,
             OrderDetailService::class
+        );
+
+        //Coupon
+        $this->app->singleton(
+            CouponRepositoryInterface::class,
+            CouponRepository::class
+        );
+
+        $this->app->singleton(
+            CouponServiceInterface::class,
+            CouponService::class
         );
 
         //User

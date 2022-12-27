@@ -1,6 +1,6 @@
 @extends('front.layout.master')
 
-@section('title', 'Login')
+@section('title', 'Đăng nhập')
 
 @section('body')
         <!--  -->
@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb-text">
-                            <a href="#"><i class="fa fa-home"></i> Home</a>
+                            <a href="/"><i class="fa fa-home"></i> Home</a>
                             <span>Login</span>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-lg-6 offset-lg-3">
                         <div class="login-form">
-                            <h2>Login</h2>
+                            <h2>Đăng nhập</h2>
 
                             @if(session('notification'))
                                 <div class="alert alert-warning" role="alert">
@@ -36,27 +36,27 @@
                             <form action="" method="post">
                                 @csrf
                                 <div class="group-input">
-                                    <label for="email">Email address *</label>
+                                    <label for="email">Email *</label>
                                     <input type="text" id="email" name="email">
                                 </div>
                                 <div class="group-input">
-                                    <label for="pass">Password *</label>
+                                    <label for="pass">Mật khẩu *</label>
                                     <input type="password" id="pass" name="password">
                                 </div>
                                 <div class="group-input gi-check">
                                     <div class="gi-more">
                                         <label for="save-pass">
-                                            Save Password
+                                            Lưu mật khẩu
                                             <input type="checkbox" id="save-pass" name="remember">
                                             <span class="checkmark"></span>
                                         </label>
-                                        <a href="#" class="forget-pass">Forget Password?</a>
+                                        <a href=./account/forgot-pass class="forget-pass">Quên mật khẩu?</a>
                                     </div>
                                 </div>
-                                <button class="site-btn login-btn" type="submit">Sign In</button>
+                                <button class="site-btn login-btn" type="submit">Đăng nhập</button>
                             </form>
                             <div class="switch-login">
-                                <a href="./account/register" class="or-login">Or Create An Account</a>
+                                <a href="./account/register" class="or-login">Hoặc tạo tài khoản</a>
                             </div>
                         </div>
                     </div>

@@ -12,9 +12,9 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Product
+                        Sản phẩm
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            Thêm, xóa, sửa.
                         </div>
                     </div>
                 </div>
@@ -62,11 +62,12 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th>Name / Brand</th>
-                                    <th class="text-center">Price</th>
-                                    <th class="text-center">Qty</th>
+                                    <th>Tên / Hãng</th>
+                                    <th class="text-center">Giá vốn</th>
+                                    <th class="text-center">Giá bán</th>
+                                    <th class="text-center">Số lượng</th>
                                     <th class="text-center">Featured</th>
-                                    <th class="text-center">Actions</th>
+                                    <th class="text-center">Tác vụ</th>
                                 </tr>
                             </thead>
 
@@ -94,6 +95,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    <td class="text-center">{{$product->funds}}<sup>đ</sup></td>
                                     <td class="text-center">{{$product->price}}<sup>đ</sup></td>
                                     <td class="text-center">{{$product->qty}}</td>
                                     <td class="text-center">

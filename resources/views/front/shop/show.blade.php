@@ -23,7 +23,7 @@
                                     <div class="product-thumbs-track ps-slider owl-carousel">
                                         @foreach($product->productImages as $productImage)
                                             <div class="pt active" data-imgbigurl="front/img/products/{{$productImage->path}}">
-                                                <img src="front/img/products/{{$productImage->path}}" alt="">
+                                                <img src="front/img/products/{{$productImage->path}}" style="height: 170px" alt="">
                                             </div>
                                         @endforeach
                                     </div>
@@ -49,13 +49,13 @@
                                     <div class="pd-desc">
                                         <p>{{$product->content}}</p>
                                         @if($product->discount != null)
-                                            <h4>${{$product->discount}} <span>{{$product->price}}</span></h4>
+                                            <h4>{{$product->discount}}<sup>đ</sup> <span>{{$product->price}}</span></h4>
                                         @else
-                                            <h4>${{$product->price}}</h4>
+                                            <h4>{{$product->price}}<sup>đ</sup></h4>
                                         @endif
                                     </div>
                                     <div class="pd-color">
-                                        <h6>Color</h6>
+                                        <h6>Màu sắc</h6>
                                         <div class="pd-color-choose">
                                             @foreach(array_unique(array_column($product->productDetails->toArray(), 'color')) as $productColor)
                                                 <div class="cc-item">
@@ -75,15 +75,15 @@
                                     </div>
                                     <div class="quantity">
                                         <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                            <a href="#" class="primary-btn pd-cart">Add To Cart</a>
+                                            <a href="javascript:addCart({{$product->id}})" class="primary-btn pd-cart">Thêm giỏ hàng</a>
                                         </div>
                                     </div>
+                                    <div class="quantity">
+                                        <a href="http://127.0.0.1:7777/" class="primary-btn pd-cart">Thử đồ</a>
+                                    </div>
                                     <ul class="pd-tags">
-                                        <li><span>CATEGORIES</span>: {{$product->productCategory->name}}</li>
-                                        <li><span>TAGS</span>: {{$product->tag}}</li>
+                                        <li><span>Danh mục</span>: {{$product->productCategory->name}}</li>
+                                        <li><span>Tags</span>: {{$product->tag}}</li>
                                     </ul>
                                     <div class="pd-share">
                                         <div class="p-code">Sku : {{$product->sku}}</div>
@@ -141,7 +141,7 @@
                                                     <td class="p-category">Price</td>
                                                     <td>
                                                         <div class="p-price">
-                                                            ${{$product->price}}
+                                                            {{$product->price}}<sup>đ</sup>
                                                         </div>
                                                     </td>
                                                 </tr>

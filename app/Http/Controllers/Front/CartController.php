@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Services\Coupon\CouponServiceInterface;
 use App\Services\Product\ProductServiceInterface;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -10,10 +11,13 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     private $productService;
+    private $couponService;
 
-    public function __construct(ProductServiceInterface $productService)
+    public function __construct(ProductServiceInterface $productService,
+                                CouponServiceInterface $couponService)
     {
         $this->productService = $productService;
+        $this->couponService = $couponService;
     }
 
     public function index()
@@ -78,5 +82,16 @@ class CartController extends Controller
 
             return $response;
         }
+    }
+
+    public function checkcoupon(Request $request){
+
+        $data = $request->all();
+
+        if($request->get('code') != null){
+            $data['code'] = $request->get('code');
+        }
+
+
     }
 }

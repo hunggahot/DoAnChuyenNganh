@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('title', 'Product')
+@section('title', 'Coupon')
 
 @section('body')
     <!-- Main -->
@@ -13,7 +13,7 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Product
+                        Coupon
                         <div class="page-title-subheading">
                             View, create, update, delete and manage.
                         </div>
@@ -26,21 +26,6 @@
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body display_data">
-
-                        <div class="position-relative row form-group">
-                            <label for="" class="col-md-3 text-md-right col-form-label">Images</label>
-                            <div class="col-md-9 col-xl-8">
-                                <ul class="text-nowrap overflow-auto" id="images">
-                                    @foreach($product->productImages as $productImage)
-                                    <li class="d-inline-block mr-1" style="position: relative;">
-                                        <img style="height: 150px;" src="./front/img/products/{{$productImage->path}}"
-                                            alt="Image">
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-
                         <div class="position-relative row form-group">
                             <label for="brand_id"
                                 class="col-md-3 text-md-right col-form-label">Product Images</label>

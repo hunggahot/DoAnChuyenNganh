@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\ProductCategory;
+namespace App\Services\Coupon;
 
 use App\Services\ServiceInterface;
 
-interface ProductCategoryServiceInterface extends ServiceInterface
+interface CouponServiceInterface extends ServiceInterface
 {
 
 }

@@ -7,6 +7,7 @@ use App\Services\Brand\BrandServiceInterface;
 use App\Services\Product\ProductServiceInterface;
 use App\Services\ProductCategory\ProductCategoryServiceInterface;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class ProductController extends Controller
 {
@@ -30,6 +31,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+
         $products = $this->productService->searchAndPaginate('name', $request->get('search'));
 
         return view('admin/product/index', compact('products'));
@@ -118,5 +120,21 @@ class ProductController extends Controller
         $this->productService->delete($id);
 
         return redirect('admin/product');
+    }
+
+    public function products(){
+        $client = new Client();
+        $response = $client->get('http://localhost:8000/api/product');
+        $products = json_decode($response->getBody());
+        $products = $products->data;
+        return view('apitest.index', compact('products'));
+    }
+
+    public function api(){
+        $client = new Client();
+        $response = $client->get('https://0b39-2402-800-6379-c6e0-65ce-13f1-dd33-6efe.ap.ngrok.io');
+        $body = json_decode($response->getBody());
+
+        print_r($body);
     }
 }

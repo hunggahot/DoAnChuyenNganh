@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\ProductCategory;
+namespace App\Repositories\Coupon;
 
 use App\Repositories\RepositoryInterface;
 
-interface ProductCategoryRepositoryInterface extends RepositoryInterface
+interface CouponRepositoryInterface extends RepositoryInterface
 {
 
 }

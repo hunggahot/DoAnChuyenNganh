@@ -18,6 +18,8 @@ class CreateProductCategoriesTable extends Migration
 
             $table->string('name');
 
+            $table->integer('coupon_id')->unsigned();
+
             $table->timestamps();
         });
     }

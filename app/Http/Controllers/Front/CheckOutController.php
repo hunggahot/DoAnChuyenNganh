@@ -7,9 +7,11 @@ use App\Services\Order\OrderServiceInterface;
 use App\Services\OrderDetail\OrderDetailServiceInterface;
 use App\Utilities\Constant;
 use App\Utilities\VNPay;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Mail;
+use Symfony\Component\Process\Process;
 
 class CheckOutController extends Controller
 {
@@ -49,6 +51,7 @@ class CheckOutController extends Controller
                 'qty' => $cart->qty,
                 'amount' => $cart->price,
                 'total' => $cart->qty * $cart->price,
+                'order_date' => Carbon::now('Asia/Ho_Chi_minh')->format('Y-m-d'),
             ];
 
             $this->orderDetailService->create($data);
@@ -73,7 +76,7 @@ class CheckOutController extends Controller
             $data_url = VNPay::vnpay_create_payment([
                 'vnp_TxnRef' => $order->id, //Order Id
                 'vnp_OrderInfo' =>  'Mô tả đơn hàng tại đây...', //Mô tả đơn hàng
-                'vnp_Amount' => Cart::total(0, '', '') * 24807, //Tổng giá đơn hàng
+                'vnp_Amount' => Cart::total(0, '', ''), //Tổng giá đơn hàng
             ]);
 
             //URL link redirect
@@ -119,6 +122,11 @@ class CheckOutController extends Controller
                     ->with('notification', 'Đơn hàng bị lỗi hoặc bị hủy.');
             }
         }
+    }
+
+    public function momoCheck(Request $request)
+    {
+
     }
 
     public function result()

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Services\ProductCategory;
+namespace App\Services\Coupon;
 
-use App\Repositories\ProductCategory\ProductCategoryRepositoryInterface;
+use App\Repositories\Coupon\CouponRepositoryInterface;
 use App\Services\BaseService;
 
-class ProductCategoryService extends BaseService implements ProductCategoryServiceInterface
+class CouponService extends BaseService implements CouponServiceInterface
 {
     public $repository;
 
-    public function __construct(ProductCategoryRepositoryInterface $productCategoryRepository)
+    public function __construct(CouponRepositoryInterface $CouponRepository)
     {
-        $this->repository = $productCategoryRepository;
+        $this->repository = $CouponRepository;
     }
 }

@@ -13,5 +13,7 @@ class Coupon extends Model
     protected $primaryKey = 'id';
     protected $guarded = [];
 
-
+    public function productCategory(){
+        return $this->hasMany(ProductCategory::class, 'coupon_id', 'id');
+    }
 }

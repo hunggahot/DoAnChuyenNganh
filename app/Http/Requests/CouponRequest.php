@@ -4,8 +4,9 @@ namespace App\Http\Requests;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class FormDataRequest extends FormRequest
+class CouponRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,12 +27,12 @@ class FormDataRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5',
-            'code' => 'required|min:5',
+            'code' => 'required|min:5|regex:/([A-Z0-9])+\S/|unique:coupon',
             'times' => 'required|numeric',
             'condition' => 'required',
             'number' => 'required|numeric',
-            'date_start' => 'required|after:' . Carbon::now('Asia/Ho_Chi_Minh')->format('d/m/Y'),
-            'date_end' => 'required|after:date_start',
+            'date_start' => 'required|date_format:d/m/Y|after:' . Carbon::now('Asia/Ho_Chi_Minh')->format('d/m/Y'),
+            'date_end' => 'required|date_format:d/m/Y|after:date_start',
         ];
     }
 
@@ -40,7 +41,22 @@ class FormDataRequest extends FormRequest
         return [
             'name.required' => 'Điền tên giảm giá',
             'name.min' => 'Tên giảm giá phải trên 5 ký tự',
-            'code.required' => 'Điền tên giảm giá'
+
+            'code.required' => 'Điền mã giảm giá',
+            'code.min' => 'Mã giảm giá phải trên 5 ký tự',
+            'code.regex' => 'Mã giảm giá phải viết in hoa và không cách dòng',
+            'code.unique' => 'Mã giảm giá đã tồn tại trước đó',
+
+            'condition' => 'Chọn loại giảm giá',
+
+            'times.required' => 'Chọn số lượng',
+            'times.numeric' => 'Số lượng phải là số nguyên',
+
+            'date_start.required' => 'Chọn ngày bắt đầu',
+            'date_start.after' => 'Ngày bắt đầu phải trước hoặc bằng hiện tại',
+
+            'date_end.required' => 'Chọn ngày kết thúc',
+            'date_end.after' => 'Ngày kết thúc phải trước ngày bắt đầu',
         ];
     }
 }

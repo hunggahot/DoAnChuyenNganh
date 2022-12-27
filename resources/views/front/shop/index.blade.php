@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="breadcrumb-text">
-                            <a href="/index.html"><i class="fa fa-home"></i> Home</a>
+                            <a href="/"><i class="fa fa-home"></i> Home</a>
                             <span>Shop</span>
                         </div>
                     </div>
@@ -29,23 +29,25 @@
 
                     </div>
                     <div class="col-lg-9 order-1 order-lg-2">
+
                         <div class="product-show-option">
+
                             <div class="row">
                                 <div class="col-lg-7 col-md-7">
                                     <form action="">
                                         <div class="select-option">
                                             <select name="sort_by" onchange="this.form.submit();" class="sorting">
-                                                <option {{request('sort_by') == 'latest' ? 'selected' : ''}} value="latest">Sorting: Latest</option>
-                                                <option {{request('sort_by') == 'oldest' ? 'selected' : ''}} value="oldest">Sorting: Oldest</option>
-                                                <option {{request('sort_by') == 'name-ascending' ? 'selected' : ''}} value="name-ascending">Sorting: Name A->Z</option>
-                                                <option {{request('sort_by') == 'name-descending' ? 'selected' : ''}} value="name-descending">Sorting: Name Z->A</option>
-                                                <option {{request('sort_by') == 'price-ascending' ? 'selected' : ''}} value="price-ascending">Sorting: Price Ascending</option>
-                                                <option {{request('sort_by') == 'price-descending' ? 'selected' : ''}} value="price-descending">Sorting: Price Descending</option>
+                                                <option {{request('sort_by') == 'latest' ? 'selected' : ''}} value="latest">Lọc theo: Mới nhất</option>
+                                                <option {{request('sort_by') == 'oldest' ? 'selected' : ''}} value="oldest">Lọc theo: Cũ nhất</option>
+                                                <option {{request('sort_by') == 'name-ascending' ? 'selected' : ''}} value="name-ascending">Lọc theo: Tên A->Z</option>
+                                                <option {{request('sort_by') == 'name-descending' ? 'selected' : ''}} value="name-descending">Lọc theo: Tên Z->A</option>
+                                                <option {{request('sort_by') == 'price-ascending' ? 'selected' : ''}} value="price-ascending">Lọc theo: Giá tăng dần</option>
+                                                <option {{request('sort_by') == 'price-descending' ? 'selected' : ''}} value="price-descending">Lọc theo: Giá giảm dần</option>
                                             </select>
                                             <select name="show" onchange="this.form.submit();" class="p-show">
-                                                <option {{request('show') == '9' ? 'selected' : ''}} value="9">Show: 9</option>
-                                                <option {{request('show') == '15' ? 'selected' : ''}} value="15">Show: 15</option>
-                                                <option {{request('show') == '21' ? 'selected' : ''}} value="21">Show: 21</option>
+                                                <option {{request('show') == '9' ? 'selected' : ''}} value="9">Xem: 9</option>
+                                                <option {{request('show') == '15' ? 'selected' : ''}} value="15">Xem: 15</option>
+                                                <option {{request('show') == '21' ? 'selected' : ''}} value="21">Xem: 21</option>
                                             </select>
                                         </div>
                                     </form>

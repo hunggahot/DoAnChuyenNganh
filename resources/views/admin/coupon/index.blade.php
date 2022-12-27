@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('title', 'Category')
+@section('title', 'Coupon')
 
 @section('body')
     <!-- Main -->
@@ -12,7 +12,7 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Category
+                        Coupon
                         <div class="page-title-subheading">
                             View, create, update, delete and manage.
                         </div>
@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="page-title-actions">
-                    <a href="./admin/category/create" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
+                    <a href="./admin/coupon/create" class="btn-shadow btn-hover-shine mr-3 btn btn-primary">
                         <span class="btn-icon-wrapper pr-2 opacity-7">
                             <i class="fa fa-plus fa-w-20"></i>
                         </span>
@@ -62,31 +62,78 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th>Name</th>
+                                    <th>Tên</th>
+                                    <th>Code</th>
+                                    <th>Giảm giá</th>
+                                    <th>Tình trạng</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($productCategories as $productCategory)
+                                @foreach($coupons as $coupon)
                                 <tr>
-                                    <td class="text-center text-muted">#{{$productCategory->id}}</td>
+                                    <td class="text-center text-muted">#{{$coupon->id}}</td>
                                     <td>
                                         <div class="widget-content p-0">
                                             <div class="widget-content-wrapper">
                                                 <div class="widget-content-left flex2">
-                                                    <div class="widget-heading">{{$productCategory->name}}</div>
+                                                    <div class="widget-heading">{{$coupon->name}}</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </td>
+                                    <td>
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left flex2">
+                                                    <div class="widget-heading">{{$coupon->code}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left flex2">
+                                                    @if($coupon->condition == 1)
+                                                        <div class="widget-heading">{{$coupon->number}}%</div>
+                                                    @else
+                                                        <div class="widget-heading">{{$coupon->number}}<sup>đ</sup></div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left flex2">
+                                                    @if($coupon->date_end >= $today)
+                                                        <div class="widget-heading">
+                                                            {{\App\Utilities\Constant::coupon_status_due}}
+                                                        </div>
+                                                    @else
+                                                        <div class="widget-heading">
+                                                            {{\App\Utilities\Constant::coupon_status_expired}}
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
                                     <td class="text-center">
-                                        <a href="./admin/category/{{$productCategory->id}}/edit" data-toggle="tooltip" title="Edit"
+                                        <a href="./admin/coupon/{{$coupon->id}}"
+                                           class="btn btn-hover-shine btn-outline-primary border-0 btn-sm">
+                                            Details
+                                        </a>
+                                        <a href="./admin/coupon/{{$coupon->id}}/edit" data-toggle="tooltip" title="Edit"
                                             data-placement="bottom" class="btn btn-outline-warning border-0 btn-sm">
                                             <span class="btn-icon-wrapper opacity-8">
                                                 <i class="fa fa-edit fa-w-20"></i>
                                             </span>
                                         </a>
-                                        <form class="d-inline" action=./admin/category/{{$productCategory->id}}"" method="post">
+                                        <form class="d-inline" action=./admin/coupon/{{$coupon->id}}"" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-hover-shine btn-outline-danger border-0 btn-sm"
@@ -107,7 +154,7 @@
                     </div>
 
                     <div class="d-block card-footer">
-                        {{$productCategories->links()}}
+                        {{$coupons->links()}}
                     </div>
 
                 </div>

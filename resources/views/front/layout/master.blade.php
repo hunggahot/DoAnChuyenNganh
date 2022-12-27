@@ -54,18 +54,12 @@
                     @if(Auth::check())
                         <a href="./account/logout" class="login-panel">
                             <i class="fa fa-user"></i>
-                            {{Auth::user()->name}} - Logout
+                            {{Auth::user()->name}} - Đăng xuất
                         </a>
                     @else
-                        <a href="./account/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                        <a href="./account/login" class="login-panel"><i class="fa fa-user"></i>Đăng nhập</a>
                     @endif
 
-                    <div class="lan-selector">
-                        <select name="countries" id="countries" class="language_drop" style="width: 300px;">
-                            <option value="yt" data-image="front/img/flag-1.jpg" data-imagecss="flag yt" data-title="English">English</option>
-                            <option value="yu" data-image="front/img/flag-2.jpg" data-imagecss="flag yu" data-title="German">German</option>
-                        </select>
-                    </div>
                     <div class="top-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"><i class="ti-twitter-alt"></i></a>
@@ -81,23 +75,23 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
-                            <a href="index.html">
-                                <img src="front/logo.png" height="25" alt="">
+                            <a href="/">
+                                <img src="front/img/Kawaii.png" alt="">
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-7 col-md-7" style="margin-top: 20px">
                         <form action="shop">
                             <div class="advanced-search">
-                                <button type="button" class="category-btn">All Categories</button>
+                                <button type="button" class="category-btn">Danh mục SP</button>
                                 <div class="input-group">
-                                    <input name="search" value="{{request('search')}}" type="text" placeholder="What do you need?">
+                                    <input name="search" value="{{request('search')}}" type="text" placeholder="Bạn muốn tìm gì?">
                                     <button type="submit"><i class="ti-search"></i></button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-right">
+                    <div class="col-lg-3 col-md-3 text-right" style="margin-top: 20px">
                         <ul class="nav-right">
                             <li class="heart-icon">
                                 <a href="#">
@@ -136,8 +130,8 @@
                                         <h5>${{Cart::total()}}</h5>
                                     </div>
                                     <div class="select-button">
-                                        <a href="./cart" class="primary-btn view-card">VIEW CART</a>
-                                        <a href="./checkout" class="primary-btn view-card">CHECK OUT</a>
+                                        <a href="./cart" class="primary-btn view-card">Xem giỏ hàng</a>
+                                        <a href="./checkout" class="primary-btn view-card">Thanh toán</a>
                                     </div>
                                 </div>
                             </li>
@@ -154,7 +148,7 @@
                     <div class="nav-depart">
                         <div class="depart-btn">
                             <i class="ti-menu"></i>
-                            <span>All departments</span>
+                            <span>Tất cả danh mục</span>
                             <ul class="depart-hover">
                                 <li class="active"><a href="#">Women's Clothing</a></li>
                                 <li><a href="#">Men's Clothing</a></li>
@@ -170,24 +164,24 @@
                     <nav class="nav-menu mobile-menu">
                         <ul>
                             <li class="{{(request()->segment(1) == '') ? 'active' : ''}}"><a href="./">Home</a></li>
-                            <li class="{{(request()->segment(1) == 'shop') ? 'active' : ''}}"><a href="./shop">Shop</a></li>
-                            <li><a href="">Collection</a>
+                            <li class="{{(request()->segment(1) == 'shop') ? 'active' : ''}}"><a href="./shop">Sản phẩm</a></li>
+                            <li><a href="">Danh mục</a>
                                 <ul class="dropdown">
                                     <li><a href="">Men's</a></li>
                                     <li><a href="">Women's</a></li>
                                     <li><a href="">Kids</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
-                            <li><a href="">Pages</a>
+                            <li><a href="./blog.html">Diễn đàn</a></li>
+{{--                            <li><a href="./contact.html">Liên hệ</a></li>--}}
+                            <li><a href="">Thông tin</a>
                                 <ul class="dropdown">
-                                    <li><a href="./account/my-order">My Order</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
+                                    <li><a href="./account/my-order">Đơn hàng của tôi</a></li>
+{{--                                    <li><a href="./blog-details.html">Blog Details</a></li>--}}
                                     <li><a href="./cart">Shopping Cart</a></li>
-                                    <li><a href="./check-out.html">Checkout</a></li>
-                                    <li><a href="./faq.html">Faq</a></li>
-                                    <li><a href="./register.html">Register</a></li>
+{{--                                    <li><a href="./check-out.html">Checkout</a></li>--}}
+{{--                                    <li><a href="./faq.html">Faq</a></li>--}}
+                                    <li><a href="./account/register">Register</a></li>
                                     <li><a href="./account/login">Login</a></li>
                                 </ul>
                             </li>
@@ -263,12 +257,12 @@
                 </div>
                 <div class="col-lg-2 offset-lg-1">
                     <div class="footer-widget">
-                        <h5>Infomation</h5>
+                        <h5>Thông tin</h5>
                         <ul>
-                            <li><a href="">About Us</a></li>
-                            <li><a href="">Checkout</a></li>
-                            <li><a href="">Contact</a></li>
-                            <li><a href="">Service</a></li>
+                            <li><a href="">Về chúng tôi</a></li>
+                            <li><a href="">Thanh toán</a></li>
+                            <li><a href="">Liên hệ</a></li>
+                            <li><a href="">Dịch vụ</a></li>
                         </ul>
                     </div>
                 </div>

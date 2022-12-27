@@ -13,9 +13,9 @@
                         <i class="pe-7s-ticket icon-gradient bg-mean-fruit"></i>
                     </div>
                     <div>
-                        Product
+                        Sản phẩm
                         <div class="page-title-subheading">
-                            View, create, update, delete and manage.
+                            Thêm, xóa, sửa.
                         </div>
                     </div>
                 </div>
@@ -31,10 +31,10 @@
                             @method('PUT')
                             <div class="position-relative row form-group">
                                 <label for="brand_id"
-                                    class="col-md-3 text-md-right col-form-label">Brand</label>
+                                    class="col-md-3 text-md-right col-form-label">Hãng</label>
                                 <div class="col-md-9 col-xl-8">
                                     <select required name="brand_id" id="brand_id" class="form-control">
-                                        <option value="">-- Brand --</option>
+                                        <option value="">-- Hãng --</option>
                                         @foreach($brands as $brand)
                                             <option {{$product->brand_id == $brand->id ? 'selected' : ''}} value="{{$brand->id}}">
                                                 {{$brand->name}}
@@ -46,10 +46,10 @@
 
                             <div class="position-relative row form-group">
                                 <label for="product_category_id"
-                                    class="col-md-3 text-md-right col-form-label">Category</label>
+                                    class="col-md-3 text-md-right col-form-label">Danh mục</label>
                                 <div class="col-md-9 col-xl-8">
                                     <select required name="product_category_id" id="product_category_id" class="form-control">
-                                        <option value="">-- Category --</option>
+                                        <option value="">-- Danh mục --</option>
                                         @foreach($productCategories as $category)
                                         <option {{$product->product_category_id == $category->id ? 'selected' : ''}} value={{$category->id}}>
                                             {{$category->name}}
@@ -60,48 +60,57 @@
                             </div>
 
                             <div class="position-relative row form-group">
-                                <label for="name" class="col-md-3 text-md-right col-form-label">Name</label>
+                                <label for="name" class="col-md-3 text-md-right col-form-label">Tên sản phẩm</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <input required name="name" id="name" placeholder="Name" type="text"
+                                    <input required name="name" id="name" placeholder="Tên sản phẩm" type="text"
                                         class="form-control" value="{{$product->name}}">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
                                 <label for="content"
-                                    class="col-md-3 text-md-right col-form-label">Content</label>
+                                    class="col-md-3 text-md-right col-form-label">Nội dung</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input required name="content" id="content"
-                                        placeholder="Content" type="text" class="form-control" value="{{$product->content}}">
+                                        placeholder="Nội dung" type="text" class="form-control" value="{{$product->content}}">
+                                </div>
+                            </div>
+
+                            <div class="position-relative row form-group">
+                                <label for="funds"
+                                       class="col-md-3 text-md-right col-form-label">Giá vốn</label>
+                                <div class="col-md-9 col-xl-8">
+                                    <input required name="funds" id="funds"
+                                           placeholder="Giá vốn" type="text" class="form-control" value="{{$product->funds}}">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
                                 <label for="price"
-                                    class="col-md-3 text-md-right col-form-label">Price</label>
+                                    class="col-md-3 text-md-right col-form-label">Giá bán</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input required name="price" id="price"
-                                        placeholder="Price" type="text" class="form-control" value="{{$product->price}}">
+                                        placeholder="Giá bán" type="text" class="form-control" value="{{$product->price}}">
                                 </div>
                             </div>
 
                             <div class="position-relative row form-group">
                                 <label for="discount"
-                                    class="col-md-3 text-md-right col-form-label">Discount</label>
+                                    class="col-md-3 text-md-right col-form-label">Giảm giá</label>
                                 <div class="col-md-9 col-xl-8">
                                     <input required name="discount" id="discount"
-                                        placeholder="Discount" type="text" class="form-control" value="{{$product->discount}}">
+                                        placeholder="Giảm giá" type="text" class="form-control" value="{{$product->discount}}">
                                 </div>
                             </div>
 
-                            <div class="position-relative row form-group">
-                                <label for="weight"
-                                    class="col-md-3 text-md-right col-form-label">Weight</label>
-                                <div class="col-md-9 col-xl-8">
-                                    <input required name="weight" id="weight"
-                                        placeholder="Weight" type="text" class="form-control" value="{{$product->weight}}">
-                                </div>
-                            </div>
+{{--                            <div class="position-relative row form-group">--}}
+{{--                                <label for="weight"--}}
+{{--                                    class="col-md-3 text-md-right col-form-label">Weight</label>--}}
+{{--                                <div class="col-md-9 col-xl-8">--}}
+{{--                                    <input required name="weight" id="weight"--}}
+{{--                                        placeholder="Weight" type="text" class="form-control" value="{{$product->weight}}">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="position-relative row form-group">
                                 <label for="sku"
@@ -134,9 +143,9 @@
 
                             <div class="position-relative row form-group">
                                 <label for="description"
-                                    class="col-md-3 text-md-right col-form-label">Description</label>
+                                    class="col-md-3 text-md-right col-form-label">Chi tiết mô tả</label>
                                 <div class="col-md-9 col-xl-8">
-                                    <textarea class="form-control" name="description" id="description" placeholder="Description">{{$product->description}}</textarea>
+                                    <textarea class="form-control" name="description" id="description" placeholder="Chi tiết mô tả">{{$product->description}}</textarea>
                                 </div>
                             </div>
 

@@ -13,11 +13,11 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Image</th>
-                                        <th class="p-name">Product Name</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
+                                        <th>Hình ảnh</th>
+                                        <th class="p-name">Tên sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th>Số lượng</th>
+                                        <th>Tổng</th>
                                         <th>
                                             <i onclick="confirm('Bạn có chắc muốn xóa hết sản phẩm trong giỏ hàng?') === true ? destroyCart() : ''"
                                                style="cursor: pointer" class="ti-close"></i>
@@ -31,7 +31,7 @@
                                         <td class="cart-title first-row">
                                             <h5>{{$cart->name}}</h5>
                                         </td>
-                                        <td class="p-price first-row">${{number_format($cart->price, 2)}}</td>
+                                        <td class="p-price first-row">{{$cart->price}}<sup>đ</sup></td>
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
@@ -39,7 +39,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="total-price first-row">${{number_format($cart->price * $cart->qty, 2)}}</td>
+                                        <td class="total-price first-row">{{$cart->price * $cart->qty}}<sup>đ</sup></td>
                                         <td class="close-td first-row">
                                             <i onclick="removeCart('{{$cart->rowId}}')" class="ti-close"></i>
                                         </td>
@@ -51,24 +51,25 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="cart-buttons">
-                                    <a href="#" class="primary-btn continue-shop">Continue Shopping</a>
-                                    <a href="#" class="primary-btn up-cart">Update Cart</a>
+                                    <a href="#" class="primary-btn continue-shop">Tiếp tục mua hàng</a>
+                                    <a href="#" class="primary-btn up-cart">Cập nhật</a>
                                 </div>
                                 <div class="discount-coupon">
-                                    <h6>Discount Codes</h6>
-                                    <form action="#" class="coupon-form">
-                                        <input type="text" placeholder="Enter your codes">
-                                        <button type="submit" class="site-btn coupon-btn">Apply</button>
+                                    <h6>Mã giảm giá</h6>
+                                    <form action="" method="post" class="coupon-form">
+                                        @csrf
+                                        <input type="text" name="code" placeholder="Nhập mã giảm giá">
+                                        <button type="submit" class="site-btn coupon-btn">Chấp nhận</button>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-lg-4 offset-lg-4">
                                 <div class="proceed-checkout">
                                     <ul>
-                                        <li class="subtotal">Subtotal <span>${{$total}}</span></li>
-                                        <li class="cart-total">Total <span>${{$subtotal}}</span></li>
+                                        <li class="subtotal">Tạm tính <span>{{$total}}<sup>đ</sup></span></li>
+                                        <li class="cart-total">Thành tiền <span>{{$subtotal}}<sup>đ</sup></span></li>
                                     </ul>
-                                    <a href="./checkout" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                    <a href="./checkout" class="proceed-btn">Đặt hàng</a>
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="Description" content="Enter your description here"/>
-    <title>Order Notification | CodeLean eCommerce</title>
+    <title>Thông tin đơn hàng | Hph Store</title>
 </head>
 
 <body
@@ -55,9 +55,9 @@
                             <span>{{ $order->phone }}</span>
                         </div>
                         <div class="col-6" style="flex: 0 0 50%; width: 50%; box-sizing: border-box;">
-                            <b>Order date:</b> {{ date('d/m/yy H:i', strtotime($order->created_at)) }}
+                            <b>Ngày đặt hàng:</b> {{ date('d/m/yy H:i', strtotime($order->created_at)) }}
                             <br>
-                            <b>Address:</b> {{ $order->street_address . ' - ' .  $order->town_city }}
+                            <b>Địa chỉ:</b> {{ $order->street_address . ' - ' .  $order->town_city }}
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                                         {{ $orderDetail->product->name . ' (x' . $orderDetail->qty . ')'}}
                                     </td>
                                     <td style="border-top: 1px solid #dee2e6; padding: 5px 20px 5px 0; text-align: right;">
-                                        {{ $orderDetail->total }} $
+                                        {{ $orderDetail->total }} <sup>đ</sup>
                                     </td>
                                 </tr>
                             @endforeach
@@ -143,21 +143,21 @@
                             <table class="mt-2 w-100"
                                    style="font-size: 16px; width: 100%; text-align: left;  margin-bottom: 5px;">
                                 <tr>
-                                    <td class="">Shipping fee</td>
+                                    <td class="">Phí giao hàng</td>
                                     <td class="pr-3 text-right" style="text-align: right; padding-right: 20px;">
-                                        0.0 $
+                                        0.0 <sup>đ</sup>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="">Subtotal</td>
+                                    <td class="">Tạm tính</td>
                                     <td class="pr-3 text-right" style="text-align: right; padding-right: 20px;">
-                                        {{ $subtotal }} $
+                                        {{ $subtotal }} <sup>đ</sup>
                                     </td>
                                 </tr>
                                 <tr style="font-size: 18px;">
-                                    <td><b>TOTAL</b></td>
+                                    <td><b>Thành tiền</b></td>
                                     <td class="pr-3 text-right" style="text-align: right; padding-right: 20px;">
-                                        <b>{{ $total }} $</b>
+                                        <b>{{ $total }} <sup>đ</sup></b>
                                     </td>
                                 </tr>
                             </table>

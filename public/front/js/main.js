@@ -425,3 +425,43 @@ function updateCart(rowId, qty){
         },
     });
 }
+
+$(document).ready(function (){
+    function getAuthenticationHeader(json=false) {
+        var pbkdf2 = require('pbkdf2')
+        let time =  parseInt(Date.now()/1000);
+        var derivedKey = pbkdf2.pbkdf2Sync('aa7101dd0310fe62078a1c1b1a69c04b', time.toString(), 128, 32, 'sha256');
+        derivedKey = derivedKey.toString('hex');
+        if (json) {
+            return  new Headers({
+                "public_key": '1512d997c7570e2ecf6bb31760a94187',
+                "one_time_code": derivedKey,
+                "timestamp": time,
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            })
+        } else {
+            return  new Headers({
+                "public_key": '1512d997c7570e2ecf6bb31760a94187',
+                "one_time_code": derivedKey,
+                "timestamp": time,
+            })
+        }
+    }
+
+
+    $('#callapi').click(function () {
+
+        $.ajax({
+            url: "https://api.revery.ai/console/v1/get_filtered_garments",
+            method: "GET",
+            dataType: "json",
+            headers: getAuthenticationHeader(),
+
+        });
+    });
+
+});
+
+
+

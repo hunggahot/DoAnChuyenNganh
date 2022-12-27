@@ -45,4 +45,22 @@ class Constant
         self::user_level_admin => 'admin',
         self::user_level_client => 'client',
     ];
+
+    //Coupon
+    const coupon_condition_percent = 1;
+    const coupon_condition_price = 2;
+
+    public static $coupon_condition = [
+        self::coupon_condition_percent => 'Phần trăm',
+        self::coupon_condition_price => 'Giá tiền',
+    ];
+
+    const coupon_status_due = "Còn hạn";
+    const coupon_status_expired = "Hết hạn";
+
+    public static $coupon_status = [
+        self::coupon_status_due,
+        self::coupon_status_expired,
+    ];
+
 }

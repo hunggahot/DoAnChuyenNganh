@@ -143,12 +143,15 @@ class DatabaseSeeder extends Seeder
         DB::table('product_categories')->insert([
             [
                 'name' => 'Men',
+                'coupon_id' => 1,
             ],
             [
                 'name' => 'Women',
+                'coupon_id' => 1,
             ],
             [
                 'name' => 'Kids',
+                'coupon_id' => 1,
             ],
         ]);
 
@@ -160,6 +163,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Pure Pineapple',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor sit amet, consectetur adipisicing elit, sed do mod tempor',
                 'content' => '',
+                'funds' => null,
                 'price' => 629.99,
                 'qty' => 20,
                 'discount' => 495,
@@ -175,6 +179,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Guangzhou sweater',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 35,
                 'qty' => 20,
                 'discount' => 13,
@@ -190,6 +195,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Guangzhou sweater',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 35,
                 'qty' => 20,
                 'discount' => 34,
@@ -205,6 +211,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Microfiber Wool Scarf',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 64,
                 'qty' => 20,
                 'discount' => 35,
@@ -220,6 +227,7 @@ class DatabaseSeeder extends Seeder
                 'name' => "Men's Painted Hat",
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 44,
                 'qty' => 20,
                 'discount' => 35,
@@ -235,6 +243,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Converse Shoes',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 35,
                 'qty' => 20,
                 'discount' => 34,
@@ -250,6 +259,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Pure Pineapple',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 64,
                 'qty' => 20,
                 'discount' => 35,
@@ -265,6 +275,7 @@ class DatabaseSeeder extends Seeder
                 'name' => '2 Layer Windbreaker',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 44,
                 'qty' => 20,
                 'discount' => 35,
@@ -280,6 +291,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Converse Shoes',
                 'description' => null,
                 'content' => null,
+                'funds' => null,
                 'price' => 35,
                 'qty' => 20,
                 'discount' => 34,
@@ -393,6 +405,12 @@ class DatabaseSeeder extends Seeder
                 'messages' => 'Nice !',
                 'rating' => 4,
             ],
+        ]);
+
+        DB::table('coupon')->insert([
+           [
+                'id' => 1,
+           ] ,
         ]);
     }
 }

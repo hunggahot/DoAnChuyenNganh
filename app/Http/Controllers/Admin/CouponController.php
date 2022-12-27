@@ -3,18 +3,35 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CouponRequest;
+use App\Models\Coupon;
+use App\Services\Coupon\CouponServiceInterface;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
 {
+
+    private $couponService;
+
+    public function __construct(CouponServiceInterface $couponService)
+    {
+        $this->couponService = $couponService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $coupons = $this->couponService->searchAndPaginate('name', $request->get('search'));
+
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d/m/Y');
+
+
+        return view('admin.coupon.index', compact('coupons', 'today'));
     }
 
     /**
@@ -24,7 +41,9 @@ class CouponController extends Controller
      */
     public function create()
     {
-        //
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d/m/Y');
+
+        return view('admin.coupon.create', compact('today'));
     }
 
     /**
@@ -33,9 +52,14 @@ class CouponController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CouponRequest $request)
     {
-        //
+        $data = $request->all();
+        $this->couponService->create($data);
+
+
+        return redirect('admin/coupon');
+
     }
 
     /**
@@ -46,7 +70,9 @@ class CouponController extends Controller
      */
     public function show($id)
     {
-        //
+        $coupon = $this->couponService->find($id);
+
+        return view('admin.coupon.show', compact('coupon'));
     }
 
     /**
@@ -57,7 +83,10 @@ class CouponController extends Controller
      */
     public function edit($id)
     {
-        //
+        $coupon = $this->couponService->find($id);
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d/m/Y');
+
+        return view('admin.coupon.edit', compact('coupon', 'today'));
     }
 
     /**
@@ -69,7 +98,10 @@ class CouponController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $this->couponService->update($data, $id);
+
+        return redirect('admin/coupon/' . $id);
     }
 
     /**
@@ -80,6 +112,9 @@ class CouponController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->couponService->delete($id);
+
+        return redirect('admin/coupon');
     }
+
 }
