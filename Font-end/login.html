@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Login</title>
+        <link rel="shortcut icon" href="/img/logo.png" />
+        <link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      </head>
+<body>
+    <!-- Thanh Nav --> 
+    <header class="p-3 mb-3">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+    
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="font-size:20px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+              <li><a href="/index.html"><img src="/img/logo.png" width="80" height="80" /> </a></li>
+              <li><a href="#" class="nav-link px-2 link-dark ">Home</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">Product</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">Contact</a></li>
+              <li><a href="#" class="nav-link px-2 link-dark">About Us</a></li>
+            </ul>
+    
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+              <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+            </form>
+            <div style="margin-right: 10px;">
+                <a href="#"><img src="/img/giohang.png" width="32" height="32" /> </a>
+            </div>
+            
+            <div class="dropdown text-end">
+              <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/img/person.png" alt="mdo" width="32" height="32" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu text-small">
+                <li><a class="dropdown-item" href="/login.html">Sign in</a></li>
+                <li><a class="dropdown-item" href="/register.html">Sign up</a></li>
+                <li><a class="dropdown-item" href="#">Info</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Log out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+    </header>
+    <hr class="featurette-divider">
+    <!--Login -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <img style="margin-left:100px" src="/img/logo.png" alt="" width="400" height="500">           
+            </div>
+            <div class="col-md-4">
+                <form>
+                    <div class="text-center mb-3">
+                        <div class="text-center mb-3">
+                            <p style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-size:50px">Sign in with</p>
+                            
+                          </div>
+                      <button type="button" class="btn btn-dark btn-floating mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                            <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                          </svg>
+                      </button>
+              
+                      <button type="button" class="btn btn-dark btn-floating mx-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                            <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                          </svg>
+                      </button>
+                    </div>             
+                    <p class="text-center">or:</p>
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+                      <br>
+                    <div class="form-floating">
+                      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <br>
+                    <div class="row mb-4">
+                        <div class="col-md-6 d-flex justify-content-center">
+                          <!-- Checkbox -->
+                          <div class="form-check mb-3 mb-md-0">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                              </label>
+                          </div>
+                        </div>
+                
+                        <div class="col-md-6 d-flex justify-content-center">
+                          <!-- Simple link -->
+                          <a href="#!" style="color:black ;">Forgot password?</a>
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <p>Not a member? <a href="/register.html" style="color:black ;">Register</a></p>
+                      </div>
+            </div>
+        </div>                
+    </div> 
+    <script src="/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
